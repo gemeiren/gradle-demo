@@ -2,7 +2,6 @@ package jarTool.jedisDoRedis;
 /** 
  * @Description:  http://www.cnblogs.com/liuling/p/2014-4-19-04.html#3390792
  * http://www.cnblogs.com/liuling/p/2014-4-20-01.html
- * @author zhitao.li
  * @date 2016年3月29日  上午10:16:54
  */
 
