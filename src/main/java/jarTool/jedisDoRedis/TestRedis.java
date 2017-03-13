@@ -9,12 +9,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import redis.clients.jedis.Jedis;
-
 
 
 public class TestRedis {
