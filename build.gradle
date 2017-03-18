@@ -72,5 +72,12 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.apache.poi/poi-scratchpad
 	compile group: 'org.apache.poi', name: 'poi-scratchpad', version: '3.8'
 	
+	//模拟接口返回  1.6.5
+	//compile("org.powermock:powermock-api-mockito:1.6.5")
+	//compile("org.powermock:powermock-module-junit4:1.6.5")
+	
+	compile group: 'org.powermock', name: 'powermock-api-mockito', version: '1.6.5'
+	compile group: 'org.powermock', name: 'powermock-module-junit4', version: '1.6.5'
+	
 }
 
