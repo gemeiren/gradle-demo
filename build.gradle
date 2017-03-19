@@ -84,5 +84,9 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.jboss.netty/netty
 	compile group: 'org.jboss.netty', name: 'netty', version: '3.2.6.Final'
 	
+	// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
+	
+	
 }
 
