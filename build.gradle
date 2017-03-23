@@ -87,6 +87,14 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
 	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
 	
+	// https://mvnrepository.com/artifact/org.apache.commons/commons-collections4
+	//compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.1'
+
+	// https://mvnrepository.com/artifact/commons-collections/commons-collections
+	compile group: 'commons-collections', name: 'commons-collections', version: '3.2.1'
+
+	
+	
 	
 }
 
