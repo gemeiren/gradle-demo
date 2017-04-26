@@ -24,9 +24,13 @@ public class TestReflect {
 	  //      System.out.println("类加载器  " + testReflect.getClass().getClassLoader().getClass().getName());
 	
 	 public static void main(String[] args) throws Exception {
-	        MyInvocationHandler demo = new MyInvocationHandler();
+	       MyInvocationHandler demo = new MyInvocationHandler();
 	        Subject sub = (Subject) demo.bind(new RealSubject());
 	        String info = sub.say("Rollen", 20);
 	        System.out.println(info);
+	        System.out.println("奇怪哦。。。上面的动态代理没有实现AOP,下面的这种有");
+	        sub.see();
+	        
+		
 	 }
 }
