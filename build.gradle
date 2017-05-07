@@ -94,6 +94,8 @@ dependencies {
 	compile group: 'commons-collections', name: 'commons-collections', version: '3.2.1'
 
 	
+	// https://mvnrepository.com/artifact/cglib/cglib
+	compile group: 'cglib', name: 'cglib', version: '2.2.2'
 	
 	
 }
