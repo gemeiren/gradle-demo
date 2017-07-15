@@ -1,0 +1,15 @@
+
+Java 各种Mock工具比较
+http://blog.csdn.net/yasi_xi/article/details/24642517
+
+
+Java单元测试--基于Mockito的PowerMock使用
+http://susiya.iteye.com/blog/2323366
+【Powermock 扩展于EasyMock和Mockito，而Mockito相对于EasyMock的优点其中一个是异常更清晰易懂。
+现在用的是基于Mockito的Powermock，它可以mock静态方法，mock构造函数，mock void方法，mock部分方法，mock私有方法等。
+以下是如果使用基于Mockito的Powermock版本。】
+
+
+
+
+
