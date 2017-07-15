@@ -76,8 +76,8 @@ dependencies {
 	//compile("org.powermock:powermock-api-mockito:1.6.5")
 	//compile("org.powermock:powermock-module-junit4:1.6.5")
 	
-	compile group: 'org.powermock', name: 'powermock-api-mockito', version: '1.6.5'
-	compile group: 'org.powermock', name: 'powermock-module-junit4', version: '1.6.5'
+	//compile group: 'org.powermock', name: 'powermock-api-mockito', version: '1.6.5'
+	//compile group: 'org.powermock', name: 'powermock-module-junit4', version: '1.6.5'
 	
 	// https://mvnrepository.com/artifact/io.netty/netty-all
 	compile group: 'io.netty', name: 'netty-all', version: '4.1.5.Final'
@@ -100,6 +100,6 @@ dependencies {
 	
 	// mockito-all依赖与  powermock 冲突
 	// https://mvnrepository.com/artifact/org.mockito/mockito-all         【对应SimpleTest.java】
-	//compile group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
+	compile group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
 }
 

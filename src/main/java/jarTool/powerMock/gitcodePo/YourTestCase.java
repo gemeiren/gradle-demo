@@ -1,4 +1,4 @@
-package jarTool.powerMock.gitcodePo;
+/*package jarTool.powerMock.gitcodePo;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,10 +7,10 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-/** 
+*//** 
  * @Description: 描述 
  * @date 2017年1月4日  上午11:12:53
- */
+ *//*
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(Static.class)
 public class YourTestCase {
@@ -44,3 +44,4 @@ public class YourTestCase {
         Static.thirdStaticMethod();
     }
 }
+*/

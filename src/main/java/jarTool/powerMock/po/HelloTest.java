@@ -1,4 +1,4 @@
-package jarTool.powerMock.po;
+/*package jarTool.powerMock.po;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,11 +7,11 @@ import org.powermock.api.support.membermodification.MemberMatcher;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
-/** 
+*//** 
  * @Description: http://susiya.iteye.com/blog/2323366 
  * http://www.cnblogs.com/jiyuqi/p/3564621.html
  * @date 2016年10月9日  下午4:11:53
- */
+ *//*
 @RunWith(PowerMockRunner.class)  
 @PrepareForTest({Kitty.class,Hello.class}) 
 public class HelloTest {  
@@ -87,4 +87,4 @@ public class HelloTest {
 	
 	
 	
-}  
+}  */
