@@ -1,4 +1,4 @@
-package jarTool.mockito;
+/*package jarTool.mockito;
 
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyString;
@@ -18,13 +18,13 @@ import org.junit.Test;
 import com.alibaba.fastjson.JSON;
 
 
-/**
+*//**
  * @Description : http://liuzhijun.iteye.com/blog/1512780
  *  【对应build.gradle】
  *  https://mvnrepository.com/artifact/org.mockito/mockito-all   
 	compile group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
  * @Date: 2017年7月9日 下午3:22:36
- */
+ *//*
 public class SimpleTest {
 	   
 		@Test  
@@ -105,11 +105,11 @@ public class SimpleTest {
 		     mockedList.add("three times");  
 		     mockedList.add("three times");  
 		       
-		     /** 
+		     *//** 
 		      * 基本的验证方法 
 		      * verify方法验证mock对象是否有没有调用mockedList.add("once")方法 
 		      * 不关心其是否有返回值，如果没有调用测试失败。 
-		      */
+		      *//*
 		     verify(mockedList).add("once");   
 		     verify(mockedList, times(1)).add("once");//默认调用一次,times(1)可以省略  
 		       
@@ -121,10 +121,11 @@ public class SimpleTest {
 		     verify(mockedList, times(0)).add("never happened");  
 		       
 		     //atLeastOnece/atLeast()/atMost()  
-		     /*verify(mockedList, atLeastOnce()).add("three times");  
+		     verify(mockedList, atLeastOnce()).add("three times");  
 		     verify(mockedList, atLeast(2)).add("twice");  
-		     verify(mockedList, atMost(5)).add("three times");  */
+		     verify(mockedList, atMost(5)).add("three times");  
 		  
 		}
 		
 }
+*/
