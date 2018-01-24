@@ -1,0 +1,44 @@
+
+随便百度的jvm参数
+http://www.howardliu.cn/java/jvm-tuning-basic/
+
+
+1、 -XX:+AlwaysPreTouch：在启动时把所有参数定义的内存全部捋一遍。使用这个参数可能会使启动变慢，但是在后面内存使用过程中会更快。可以保证内存页面连续分配，新生代晋升时不会因为申请内存页面使GC停顿加长。通常只有在内存大于32G的时候才会有感觉。
+2、 -XX:AutoBoxCacheMax=20000：增加数字对象自动装箱的范围，JDK默认-128～127的int和long，超出范围就会即时创建对象，所以，增加范围可以提高性能，但是也是需要测试。
+3、 -XX:CMSInitiatingOccupancyFraction=80 与 -XX:+UseCMSInitiatingOccupancyOnly：两个参数需要配合使用，否则第一个参数的75只是一个参考值，JVM会重新计算GC的时间。
+4、 -XX:+ExplicitGCInvokesConcurrent ：使用System.gc()时触发CMS GC，而不是Full GC。默认是不开启的，只有使用-XX:+UseConcMarkSweepGC选项的时候才能开启这个选项。
+5、  GCLockerInvokesConcurrent    这种延迟触发的GC会是CMS GC，并发模式，只收集old gen。 【前提是开启cms】
+6、 -XX:+HeapDumpOnOutOfMemoryError ：发生内存溢出是进行heap-dump
+7、 ManagementServer   【OldPLABSize  当应用开启的线程较多时，最好使用-XX:-ResizePLAB来关闭PLAB()的大小调整，以避免大量的线程通信所导致的性能下降。】
+8、 -XX:MaxTenuringThreshold=15：对象在Survivor区熬过多少次Young GC后晋升到年老代，默认是15。Young GC是最大的应用停顿来源，而新生代里GC后存活对象的多少又直接影响停顿的时间，所以如果清楚Young GC的执行频率和应用里大部分临时对象的最长生命周期，可以把它设的更短一点，让其实不是临时对象的新生代长期对象赶紧晋升到年老代。
+9、 -Xmn1g 或 （-XX:NewSize=1g 和 -XX:MaxNewSize=1g） 或 -XX:NewRatio=1：设置新生代大小，JDK默认新生代占堆内存大小的1/3，也就是-XX:NewRatio=2。这里是设置的1g，也就是-XX:NewRatio=1。可以根据自己的需要设置。
+10、 OldPLABSize           当应用开启的线程较多时，最好使用-XX:-ResizePLAB来关闭PLAB()的大小调整，以避免大量的线程通信所导致的性能下降。
+11、-XX:-OmitStackTraceInFastThrow ：不忽略重复异常的栈，这是JDK的优化，大量重复的JDK异常不再打印其StackTrace。但是如果系统是长时间不重启的系统，在同一个地方跑了N多次异常，结果就被JDK忽略了，那岂不是查看日志的时候就看不到具体的StackTrace，那还怎么调试，所以还是关了的好。
+12、 ParGCCardsPerStrideChunk    选项控制GC工作线程的任务粒度，可以帮助不使用补丁而获得最佳性能，这个补丁用来优化新生代垃圾回收的卡表扫描时间。
+13、 -XX:+ParallelRefProcEnabled ：默认为false，并行的处理Reference对象，如WeakReference，除非在GC log里出现Reference处理时间较长的日志，否则效果不会很明显。
+14、 -XX:+PerfDisableSharedMem ：启用标准内存使用。JVM控制分为标准或共享内存，区别在于一个是在JVM内存中，一个是生成/tmp/hsperfdata_{userid}/{pid}文件，存储统计数据，通过mmap映射到内存中，别的进程可以通过文件访问内容。通过这个参数，可以禁止JVM写在文件中写统计数据，代价就是jps、jstat这些命令用不了了，只能通过jmx获取数据。但是在问题排查是，jps、jstat这些小工具是很好用的，比jmx这种很重的东西好用很多，所以需要自己取舍。这里有个GC停顿的例子。
+15、 PrintCommandLineFlags		这个参数让JVM打印出那些已经被用户或者JVM设置过的详细的XX参数的名称和值
+16、 -XX:+PrintGCApplicationConcurrentTime ：打印JVM在两次停顿之间正常运行时间，与-XX:+PrintGCApplicationStoppedTime一起使用效果更佳。
+17、 -XX:+PrintGCApplicationStoppedTime ：打印所有引起JVM停顿时间，如果真的发现了一些不知什么的停顿，再临时加上-XX:+PrintSafepointStatistics -XX: PrintSafepointStatisticsCount=1找原因。
+18、 -XX:ReservedCodeCacheSize ：JIT编译后二进制代码的存放区，满了之后就不再编译。默认开多层编译240M，可以在JMX里看看CodeCache的大小。
+19、 UnlockDiagnosticVMOptions   指定参数-XX:+ UnlockExperimentalVMOptions 和-XX:+UnlockDiagnosticVMOptions ；来解锁任何额外的隐藏参数。
+20、 -XX:-UseBiasedLocking ：禁用偏向锁（在存在大量锁对象的创建且高度并发的环境下(即非多线程高并发应用)禁用偏向锁能够带来一定的性能优化）
+21、 UseCompressedOops 			64 bit JVM正式支持了 -XX:+UseCompressedOops 这个可以压缩指针，起到节约内存占用的新参数。   什么是 OOP ?  OOP = “ordinary object pointer” 普通对象指针。
+22、 -XX:+UseConcMarkSweepGC ：启用CMS垃圾收集器 		
+23、 UseCounterDecay	设置关闭热度衰减 禁止JIT调用计数器衰减。默认情况下，每次GC时会对调用计数器进行砍半的操作，导致有些方法一直是个温热，可能永远都达不到C2编译的1万次的阀值。【白衣  http://calvin1978.blogcn.com/articles/jvmoption-2.html  】
+24、 UseGCTaskAffinity	使用affinity参数将任务分配给GC工作线程。然而，我们的应用并没有从这些选项发现任何益处。实际上，一些调查显示这些选项在Linux系统不起作用[1,2]。
+25、 UseParNewGC	新生代使用并行的ParNew垃圾收集器
+
+
+总结：
+
+1、自动封箱 【线程空间存储方面】
+2、初始堆大小、最大堆大小 4G   最大直接内存 2G    初始非堆内存的大小、最大非堆内存的大小  512M   【各个系统、不同内存，默认初始值不一样的】
+3、old代占用率是75%的时候，启动CMS垃圾回收  【cms默认有无开启？ 有的话默认是多少？】   
+答：关闭，cms垃圾收集基于运行时收集的数据来启动CMS垃圾收集周期 来决定CMSInitiatingOccupancyFraction的值，开启后默认值是由CMSInitiatingOccupancyFraction决定的默认值为68
+
+
+
+
+
+
