@@ -17,12 +17,12 @@ public class PathUtil {
 //	    		 indexOf 开始的字母位置 = 56
 	     
 	     path = path.substring(0,path.indexOf(projectName))+projectName;
-	     System.out.println(projectName);
+	     System.out.println("projectName - " + projectName);
 	     System.out.println(path);
-	     System.out.println(path.charAt(1));
-	     System.out.println(path.indexOf(":"));//4
-	     path = path.substring(path.indexOf(":")+1,path.length());
-	     System.out.println(path);// /D:/workspace2/zMP3
+	     System.out.println("charAt(1) = " + path.charAt(1));
+	     System.out.println("indexOf(\":\") = " + path.indexOf(":"));//4
+	     path = path.substring(path.indexOf(":")+1, path.length());
+	     System.out.println("path ------ " + path);// /D:/workspace2/zMP3
 	  
 	//  file:/D:/workspace2/zMP3/build/classes/
 	//  zMP3
