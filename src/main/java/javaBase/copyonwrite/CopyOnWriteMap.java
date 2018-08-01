@@ -9,6 +9,17 @@ import java.util.Set;
 /**
  * @Description : http://ifeve.com/java-copy-on-write/
  * @Date: 2018年8月1日 下午10:52:06
+ * 
+ * 
+     * 读多写少的并发场景
+     * 减少扩容开销。根据实际需要，初始化CopyOnWriteMap的大小，避免写时CopyOnWriteMap扩容的开销。
+     * 用批量添加。因为每次添加，容器每次都会进行复制，所以减少添加次数，可以减少容器的复制次数。
+     * 
+     * 内存占用问题和数据一致性问题
+     * （注意:在复制的时候只是复制容器里的引用，只是在写的时候会创建新对象添加到新容器里，
+     * 而旧容器的对象还在使用，所以有两份对象内存）
+     * CopyOnWrite容器只能保证数据的最终一致性，不能保证数据的实时一致性。
+     * 
  */
 public class CopyOnWriteMap<K, V> implements Map<K, V>, Cloneable {
     private volatile Map<K, V> internalMap;
@@ -41,17 +52,7 @@ public class CopyOnWriteMap<K, V> implements Map<K, V>, Cloneable {
         }*/
     }
     
-    /*
-     * 读多写少的并发场景
-     * 减少扩容开销。根据实际需要，初始化CopyOnWriteMap的大小，避免写时CopyOnWriteMap扩容的开销。
-     * 用批量添加。因为每次添加，容器每次都会进行复制，所以减少添加次数，可以减少容器的复制次数。
-     * 
-     * 内存占用问题和数据一致性问题
-     * （注意:在复制的时候只是复制容器里的引用，只是在写的时候会创建新对象添加到新容器里，
-     * 而旧容器的对象还在使用，所以有两份对象内存）
-     * CopyOnWrite容器只能保证数据的最终一致性，不能保证数据的实时一致性。
-     * 
-     */
+  
 
     public V get(Object key) {
         return internalMap.get(key);
